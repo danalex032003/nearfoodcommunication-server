@@ -1,6 +1,7 @@
 package com.nearfoodcommunication.menu.model;
 
 public class FoodItem {
+	
 	private int id;
 	private String name;
 	private double price;
