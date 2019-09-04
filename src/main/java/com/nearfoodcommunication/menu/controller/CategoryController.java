@@ -5,27 +5,25 @@ import java.util.List;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.nearfoodcommunication.menu.model.FoodItem;
+import com.nearfoodcommunication.menu.model.FoodItemInfo;
 
 
-@RestController
+//@RestController
 public class CategoryController {
 	
-	@GetMapping(value="/food-items/{id}")
-	public List<FoodItem> getFoodItems(@PathVariable int id) {
-		List<FoodItem> foodItems = new ArrayList<FoodItem>();
-		FoodItem foodItem1 = new FoodItem();
+//	@GetMapping(value = "/food-items/{id}")
+	public List<FoodItemInfo> getFoodItems(@PathVariable int id) {
+		List<FoodItemInfo> foodItems = new ArrayList<FoodItemInfo>();
+		FoodItemInfo foodItem1 = new FoodItemInfo();
 		foodItem1.setId(1);
 		foodItem1.setName("Pizza");
 		foodItem1.setPrice(20.00);
 		foodItem1.setWeight(500);
 		foodItem1.setDescription("Mozzarella, Sunca, Sos de rosii");
 		
-		FoodItem foodItem2 = new FoodItem();
+		FoodItemInfo foodItem2 = new FoodItemInfo();
 		foodItem2.setId(2);
 		foodItem2.setName("Paste");
 		foodItem2.setPrice(19.50);

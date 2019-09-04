@@ -1,12 +1,18 @@
 package com.nearfoodcommunication.menu.model;
 
-public class FoodItem {
+public class FoodItemInfo {
 	
 	private int id;
+	
 	private String name;
+	
 	private double price;
+	
 	private String description;
+	
 	private int weight;// in gramms
+	
+	private String pictureUrl;
 
 	public int getId() {
 		return id;
@@ -46,6 +52,14 @@ public class FoodItem {
 
 	public void setWeight(int weight) {
 		this.weight = weight;
+	}
+
+	public String getPictureUrl() {
+		return pictureUrl;
+	}
+
+	public void setPictureUrl(String pictureUrl) {
+		this.pictureUrl = pictureUrl;
 	}
 
 }
