@@ -11,6 +11,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.nearfoodcommunication.menu.entity.FoodCategoryEntity;
 
+
 @Repository
 @Transactional(readOnly = true)
 public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
@@ -18,6 +19,7 @@ public class CategoryRepositoryImpl implements CategoryRepositoryCustom {
 	private static final String SQL_QUERY_CATEGORIES_BY_PROPERTYID = "select * from nearfoodcommunication.category where id_property = ?";
 	@PersistenceContext
 	EntityManager entityManager;
+
 	@Override
 	public List<FoodCategoryEntity> getCategoriesByPropertyId(int propertyId) {
 		// TODO Auto-generated method stub
