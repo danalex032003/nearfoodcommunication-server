@@ -13,4 +13,4 @@ pluginManagement {
 	}
 }
 rootProject.name = 'nearfoodcommunication'
-springProfile = default
+springProfile = 'default'
