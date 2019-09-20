@@ -19,7 +19,7 @@ import javax.persistence.Table;
 public class OrderEntity {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.AUTO)
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	@Column(name = "id_order")
 	private Integer idOrder;
 	
