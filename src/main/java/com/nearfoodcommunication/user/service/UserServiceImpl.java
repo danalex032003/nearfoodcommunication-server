@@ -16,10 +16,9 @@ public class UserServiceImpl implements UserService {
 	public User getUserByEmailAndPassword(String email, String password) {
 		UserEntity userEntity = userRepository.getUserByEmailAndPassword(email, password);
 
-		User user = null;
+		User user = new User();
 		
 		if (userEntity != null) {
-			user = new User();
 			user.setEmail(userEntity.getEmail());
 			user.setFirstName(userEntity.getFirstName());
 			user.setIdUser(userEntity.getIdUser());

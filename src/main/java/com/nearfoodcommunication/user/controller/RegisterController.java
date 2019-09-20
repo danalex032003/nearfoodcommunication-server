@@ -1,4 +1,3 @@
-// register
 package com.nearfoodcommunication.user.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;

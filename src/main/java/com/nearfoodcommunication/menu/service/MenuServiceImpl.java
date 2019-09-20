@@ -53,9 +53,11 @@ public class MenuServiceImpl implements MenuService {
 	private List<FoodCategoryInfo> getFoodCategoryInfos(List<FoodCategoryEntity> foodCategoryEntities) {
 
 		List<FoodCategoryInfo> foodCategoryInfos = new ArrayList<>();
+		
 		if (!CollectionUtils.isEmpty(foodCategoryEntities)) {
 			for (int i = 0; i < foodCategoryEntities.size(); i++) {
 				FoodCategoryEntity currentCategory = foodCategoryEntities.get(i);
+				
 				FoodCategoryInfo foodCategoryInfo = new FoodCategoryInfo();
 				foodCategoryInfo.setId(currentCategory.getId());
 				foodCategoryInfo.setIdProperty(currentCategory.getIdProperty());
@@ -72,11 +74,13 @@ public class MenuServiceImpl implements MenuService {
 	private List<FoodItemInfo> getFoodItemInfos(List<FoodItemEntity> foodItemEntities) {
 
 		List<FoodItemInfo> foodItemInfos = new ArrayList<>();
+		
 		if (!CollectionUtils.isEmpty(foodItemEntities)) {
 			Iterator<FoodItemEntity> foodItemsIterator = foodItemEntities.listIterator();
 			while (foodItemsIterator.hasNext()) {
 				FoodItemEntity foodItemEntity = foodItemsIterator.next();
 				FoodItemInfo foodItemInfo = new FoodItemInfo();
+				
 				foodItemInfo.setDescription(foodItemEntity.getDescription());
 				foodItemInfo.setId(foodItemEntity.getId());
 				foodItemInfo.setName(foodItemEntity.getName());
