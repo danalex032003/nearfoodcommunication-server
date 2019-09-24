@@ -20,13 +20,13 @@ public class OrderServiceImpl implements OrderService {
 	@Autowired
 	OrderRepository orderRepository;
 	
-	public OrderEntity saveOrder(OrderInfo orderInfo) {
+	public OrderInfo saveOrder(OrderInfo orderInfo) {
 
 		OrderEntity orderEntity = getOrderEntity(orderInfo);
 		
 		orderEntity = orderRepository.save(orderEntity);
 				
-		return orderEntity;
+		return getOrderInfo(orderEntity);
 	}
 
 	private OrderEntity getOrderEntity(OrderInfo orderInfo) {
@@ -36,19 +36,22 @@ public class OrderServiceImpl implements OrderService {
 		orderEntity.setDate(orderInfo.getDate());
 		orderEntity.setIdOrder(orderInfo.getIdOrder());
 		orderEntity.setIdProperty(orderInfo.getIdProperty());
-		orderEntity.setOrderLine(getOrderLine(orderInfo.getOrderLines()));
+		orderEntity.setOrderLine(getOrderLineEntities(orderInfo.getOrderLines()));
 		orderEntity.setTable(orderInfo.getTable());
 
 		return orderEntity;
 	}
 
-	private List<OrderLineEntity> getOrderLine(List<OrderLineInfo> orderLineInfos) {
+	private List<OrderLineEntity> getOrderLineEntities(List<OrderLineInfo> orderLineInfos) {
 
 		List<OrderLineEntity> orderLineEntities = new ArrayList<>();
 		
 		if (!CollectionUtils.isEmpty(orderLineInfos)) {
+			
 			Iterator<OrderLineInfo> orderLineIterator = orderLineInfos.listIterator();
+			
 			while (orderLineIterator.hasNext()) {
+				
 				OrderLineInfo orderLineInfo = orderLineIterator.next();
 				OrderLineEntity orderLineEntity = new OrderLineEntity();
 
@@ -62,5 +65,46 @@ public class OrderServiceImpl implements OrderService {
 			}
 		}
 		return orderLineEntities;
+	}
+	
+	private OrderInfo getOrderInfo(OrderEntity orderEntity) {
+		
+		OrderInfo orderInfo = new OrderInfo();
+		
+		orderInfo.setIdOrder(orderEntity.getIdOrder());
+		orderInfo.setIdProperty(orderEntity.getIdProperty());
+		orderInfo.setOrderLines(getOrderLineInfos(orderEntity.getOrderLine()));
+		orderInfo.setTable(orderEntity.getTable());
+		orderInfo.setDate(orderEntity.getDate());
+		
+		return orderInfo;
+	}
+	
+	private List<OrderLineInfo> getOrderLineInfos(List<OrderLineEntity> orderLineEntities) {
+		
+		List<OrderLineInfo> orderLineInfos = new ArrayList<>();
+		
+		if (!CollectionUtils.isEmpty(orderLineEntities)) {
+			
+			Iterator<OrderLineEntity> orderLineIterator = orderLineEntities.listIterator();
+			
+			while(orderLineIterator.hasNext()) {
+				
+				OrderLineEntity orderLineEntity = orderLineIterator.next();
+				OrderLineInfo orderLineInfo = new OrderLineInfo();
+				
+				orderLineInfo.setIdOrder(orderLineEntity.getIdOrder());
+				orderLineInfo.setIdOrderLine(orderLineEntity.getIdOrderLine());
+				orderLineInfo.setName(orderLineEntity.getName());
+				orderLineInfo.setQuantity(orderLineEntity.getQuantity());
+				orderLineInfo.setQuantity(orderLineEntity.getQuantity());
+				orderLineInfo.setUnitPrice(orderLineEntity.getUnitPrice());
+				
+				orderLineInfos.add(orderLineInfo);
+			}
+			
+		}
+		
+		return orderLineInfos;
 	}
 }

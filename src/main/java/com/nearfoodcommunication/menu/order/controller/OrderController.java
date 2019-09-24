@@ -20,11 +20,11 @@ public class OrderController {
 	private OrderService orderService;
 	
 	@PostMapping(value = "/order", consumes = MediaType.APPLICATION_JSON_VALUE, produces = MediaType.APPLICATION_JSON_VALUE)
-	public OrderEntity saveOrder(@RequestBody OrderInfo orderInfo) {
+	public OrderInfo saveOrder(@RequestBody OrderInfo orderInfo) {
 		
 		orderInfo.setDate(new Timestamp(new Date().getTime()));
-		OrderEntity orderEntity = orderService.saveOrder(orderInfo);
+		OrderInfo savedOrder = orderService.saveOrder(orderInfo);
 		
-		return orderEntity;
+		return savedOrder;
 	}
 }

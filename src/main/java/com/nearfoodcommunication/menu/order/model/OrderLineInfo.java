@@ -1,8 +1,5 @@
 package com.nearfoodcommunication.menu.order.model;
 
-
-import com.nearfoodcommunication.menu.order.entity.OrderLineEntity;
-
 public class OrderLineInfo {
 
 	private Integer idOrderLine;
